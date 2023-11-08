@@ -28,7 +28,7 @@ const UserForm: React.FC<Props> = ({onSubmit}) => {
     onSubmit({
       id: Math.random().toString(),
       ...user,
-      status: checkState,
+      status: checkState.checkbox,
     });
   };
 
@@ -62,16 +62,6 @@ const UserForm: React.FC<Props> = ({onSubmit}) => {
         />
       </div>
       <div className="form-group">
-        <label htmlFor="status">Status</label>
-        <input
-          name="status"
-          id="status"
-          className="form-control"
-          value={user.status}
-          onChange={changeUser}
-        />
-      </div>
-      <div className="form-group">
         <label htmlFor="role">Role</label>
         <select
           name="role"
@@ -84,6 +74,16 @@ const UserForm: React.FC<Props> = ({onSubmit}) => {
           <option value='editor'>editor</option>
           <option value='admin'>admin</option>
         </select>
+      </div>
+      <div className="form-group mt-2">
+        <label htmlFor="status">Status: Active / Not Active </label>
+        <input
+          type="checkbox"
+          name="status"
+          id="status"
+          checked={checkState.checkbox}
+          onChange={checkBoxChange}
+        />
       </div>
       <button type="submit" className="btn btn-primary mt-2">Create</button>
     </form>
